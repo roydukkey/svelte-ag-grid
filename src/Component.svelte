@@ -38,7 +38,7 @@
   };
 
   const onGridReady = (e) => {
-    api = grid.gridOptions.api;
+    api = e.api;
     if (loading) api.showLoadingOverlay();
     if (events.onGridReady) events.onGridReady(e);
   };
