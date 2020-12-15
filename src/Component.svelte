@@ -20,23 +20,27 @@
   export let loading = false;
 
   let themeUrl = `https://unpkg.com/ag-grid-community/dist/styles/ag-theme-${theme}.css`;
+  let events = {};
   let ref;
   let grid;
   let api;
 
-  const onSelectionChanged = () => {
+  const onSelectionChanged = (e) => {
     const selectedRows = api.getSelectedRows();
     dispatch("select", selectedRows);
+    if (events.onSelectionChanged) events.onSelectionChanged(e);
   };
 
   const onCellValueChanged = (e) => {
     data[e.rowIndex] = e.data;
     dispatch("update", { row: e.rowIndex, data: e.data });
+    if (events.onCellValueChanged) events.onCellValueChanged(e);
   };
 
-  const onGridReady = () => {
+  const onGridReady = (e) => {
     api = grid.gridOptions.api;
     if (loading) api.showLoadingOverlay();
+    if (events.onGridReady) events.onGridReady(e);
   };
 
   const updateData = (data) => {
@@ -47,6 +51,16 @@
   };
 
   onMount(() => {
+    [
+      "onSelectionChanged",
+      "onCellValueChanged",
+      "onGridReady",
+    ].forEach((event) => {
+      if (options[event]) {
+        events[event] = options[event];
+      }
+    });
+
     grid = new Grid(ref, {
       ...options,
       columnDefs,
