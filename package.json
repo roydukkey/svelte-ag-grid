@@ -2,6 +2,11 @@
   "name": "@roydukkey/svelte-ag-grid",
   "version": "1.0.0i9",
   "license": "UNLICENSED",
+  "homepage": "https://github.com/roydukkey/svelte-ag-grid/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roydukkey/svelte-ag-grid.git"
+  },
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
