@@ -1,6 +1,7 @@
 {
-  "name": "@budibase/svelte-ag-grid",
-  "version": "1.0.0",
+  "name": "@roydukkey/svelte-ag-grid",
+  "version": "1.0.0i9",
+  "license": "UNLICENSED",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
